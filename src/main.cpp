@@ -1,18 +1,24 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+
+#define PIN5_MASK 0B00100000
+
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  DDRD |= PIN5_MASK;
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+PORTD |= PIN5_MASK;
+
+delay(200);
+
+PORTD &= ~PIN5_MASK;
+
+delay(200);
+
+
+
+
 }
