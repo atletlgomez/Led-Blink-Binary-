@@ -1,22 +1,32 @@
 #include <Arduino.h>
 
-
-#define PIN5_MASK 0B00100000
+//Masks 
+#define ZERO 0B00000000
+#define PIN_MASK 0B00000001
 
 
 void setup() {
-  DDRD |= PIN5_MASK;
+
+//Mask modifyied by 5 bits used to set Pin 5 OUTPUT
+  DDRD |= (PIN_MASK << 5);
+  DDRD |= (PIN_MASK << 6);
+  
 }
 
 void loop() {
 
-PORTD |= PIN5_MASK;
+//Pin 5 is turned on
+  PORTD |= (PIN_MASK << 5);
+  PORTD |= (PIN_MASK << 6);
 
-delay(200);
 
-PORTD &= ~PIN5_MASK;
+  delay(200);
 
-delay(200);
+//Pin 5 is turned off
+  PORTD &= ~(PIN_MASK <<5);
+  PORTD &= ~(PIN_MASK <<6);
+
+  delay(200);
 
 
 
